@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Facebook-messenger-clone/static/css/main.5f7c5d9b.css",
+    "main.js": "/Facebook-messenger-clone/static/js/main.a734ac89.js",
+    "index.html": "/Facebook-messenger-clone/index.html",
+    "main.5f7c5d9b.css.map": "/Facebook-messenger-clone/static/css/main.5f7c5d9b.css.map",
+    "main.a734ac89.js.map": "/Facebook-messenger-clone/static/js/main.a734ac89.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5f7c5d9b.css",
+    "static/js/main.a734ac89.js"
+  ]
+}
