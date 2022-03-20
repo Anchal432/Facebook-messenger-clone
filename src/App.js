@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 // import {Button, FormControl, InputLabel, Input} from '@mui/material';
-import {Button, FormControl, InputLabel, Input} from '@material-ui/core';
+import { FormControl, InputLabel, Input} from '@material-ui/core';
 import './App.css';
 import Message from './Message';
 import db from './firebase';
@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     //run once when the app component loads
     db.collection('messages')
-    .orderBy('timestamp', 'desc')
+    .orderBy('timestamp', 'asc')
     .onSnapshot(snapshot => {      //listeners:- listening the changes in code then update it in browser
       setMessages(snapshot.docs.map(doc => ({id: doc.id, message: doc.data()})))
     });
@@ -60,34 +60,53 @@ function App() {
 
   return (
     <div className="App">
-      <img className="img-icon" alternative="messenger-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Facebook_Messenger_logo_2018.svg/1200px-Facebook_Messenger_logo_2018.svg.png?w=10&h=10" />
-      <h1>Hello Everybody :)</h1>
-      <h2>Welcome {username}</h2>
-      
-
-      <form className="app__form">
-        <FormControl className="app__formControl">
-          <InputLabel>Enter a message</InputLabel>
-          <Input className="app__input" placeholder='Enter a message...' value={input} onChange={event => setInput(event.target.value)} />
-
-          <IconButton className="app__iconButton" disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage} >
-            <SendIcon />
-          </IconButton>
-
-          {/* <Button disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}>Send Message</Button> */}
-        </FormControl>
+      <div class="layer_1">
+        <img className="img-icon" alternative="messenger-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Facebook_Messenger_logo_2018.svg/1200px-Facebook_Messenger_logo_2018.svg.png?w=10&h=10" />
+        <h1>Hello Everybody :)</h1>
+        <h2>Welcome {username}</h2>
         
-      </form>
 
-      <FlipMove>
-      {
-        messages.map(({id, message}) => (
-          // <Message username={message.username} text={message.text} />  //text is pass to message.js as a props
-          <Message key={id} username={username} message={message} />
-          // <p>{message}</p>
-        ))
-      }
-      </FlipMove>
+        {/* <form className="app__form">
+          <FormControl className="app__formControl">
+            <InputLabel>Enter a message</InputLabel>
+            <Input className="app__input" placeholder='Enter a message...' value={input} onChange={event => setInput(event.target.value)} />
+
+            <IconButton className="app__iconButton" disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage} >
+              <SendIcon />
+            </IconButton>
+
+            {/* <Button disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}>Send Message</Button> 
+          </FormControl>
+          
+        </form> */}
+
+        <FlipMove>
+        {
+          messages.map(({id, message}) => (
+            // <Message username={message.username} text={message.text} />  //text is pass to message.js as a props
+            <Message key={id} username={username} message={message} />
+            // <p>{message}</p>
+          ))
+        }
+        </FlipMove>
+      </div>
+
+      <div class="layer_2">
+        <form className="app__form">
+          <FormControl className="app__formControl">
+            <InputLabel>Enter a message</InputLabel>
+            <Input className="app__input" placeholder='Enter a message...' value={input} onChange={event => setInput(event.target.value)} />
+
+            <IconButton className="app__iconButton" disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage} >
+              <SendIcon />
+            </IconButton>
+
+            {/* <Button disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}>Send Message</Button> */}
+          </FormControl>
+          
+        </form>
+
+      </div>
 
       {/* messages themselves */}
       

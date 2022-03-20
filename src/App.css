@@ -1,5 +1,19 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.layer_1 {
+  background-color: #f1f1f1;
+  padding: 10px;
+  flex: 80%;
+}
+
+.layer_2 {
+  background-color: dodgerblue;
+  padding: 10px;
+  flex: 20%;
 }
 
 .img-icon{
@@ -9,7 +23,7 @@
 
 .app__form{
   padding: 20px;
-  position: fixed;
+  /* position: absolute; */
   bottom: 0;
   z-index: 1;
   /* text-align: center;
